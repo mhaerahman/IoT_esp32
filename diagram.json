@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "author": "Muhammad Habibie Rahman",
+  "editor": "Rahman",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": -31.8, "left": 60.4, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -38.4, "left": 772.84, "attrs": {} },
+    {
+      "type": "wokwi-hx711",
+      "id": "cell1",
+      "top": 223.4,
+      "left": 482.6,
+      "attrs": { "type": "5kg" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 54,
+      "left": 579.8,
+      "attrs": { "color": "red", "flip": "" }
+    },
+    { "type": "board-ds18b20", "id": "temp1", "top": 37.27, "left": 445.68, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -132.9,
+      "left": 389.5,
+      "attrs": { "distance": "22" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 199.6, "left": 163.2, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 99.95,
+      "left": 604.8,
+      "attrs": { "value": "100" }
+    },
+    { "type": "wokwi-servo", "id": "servo2", "top": -136.4, "left": 182.4, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 99.95,
+      "left": 460.8,
+      "attrs": { "value": "4700" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "bb1:tp.49", "bb1:bp.50", "red", [ "v-18.9", "h66.4", "v192" ] ],
+    [ "esp:GND.2", "bb1:tn.50", "black", [ "v-28.8", "h-144", "v28.8" ] ],
+    [ "bb1:tn.49", "bb1:bn.50", "black", [ "v9.5", "h76", "v163.2" ] ],
+    [ "ultrasonic1:VCC", "bb1:tp.32", "red", [ "v0" ] ],
+    [ "ultrasonic1:GND", "bb1:tn.35", "black", [ "v0" ] ],
+    [ "bb1:54b.j", "bb1:bn.44", "black", [ "v38.4" ] ],
+    [ "bb1:61b.i", "esp:2", "gold", [ "v19.2", "h76.8", "v57.6", "h182.4", "v-67.2" ] ],
+    [ "cell1:GND", "bb1:bn.43", "black", [ "h-9.6", "v-29.1", "h105.6" ] ],
+    [ "cell1:DT", "esp:21", "white", [ "h-19.2", "v-48.5", "h460.8", "v-172.8" ] ],
+    [ "cell1:SCK", "esp:22", "gold", [ "h-28.8", "v-68", "h480", "v-192" ] ],
+    [ "cell1:VCC", "bb1:bp.43", "red", [ "h-38.4", "v-57.6", "h134.4" ] ],
+    [ "ultrasonic1:TRIG", "bb1:41t.a", "gold", [ "v0" ] ],
+    [ "ultrasonic1:ECHO", "bb1:42t.a", "white", [ "v0" ] ],
+    [ "esp:4", "bb1:41t.b", "gold", [ "h48", "v-163.2", "h-182.4", "v9.6" ] ],
+    [ "bb1:42t.b", "esp:5", "white", [ "v0", "h268.8", "v-76.8", "h163.2", "v124.8" ] ],
+    [ "bb1:39b.j", "bb1:bn.31", "black", [ "v0" ] ],
+    [ "bb1:tp.31", "bb1:tp.30", "red", [ "v0" ] ],
+    [ "bb1:tn.31", "bb1:tn.30", "black", [ "v0" ] ],
+    [ "bb1:bp.30", "bb1:bp.31", "red", [ "v0" ] ],
+    [ "bb1:bn.32", "bb1:bn.30", "black", [ "v0" ] ],
+    [ "bb1:tp.25", "bb1:tp.26", "red", [ "v0" ] ],
+    [ "bb1:tn.26", "bb1:tn.25", "black", [ "v0" ] ],
+    [ "bb1:bp.26", "bb1:bp.25", "red", [ "v0" ] ],
+    [ "bb1:bn.26", "bb1:bn.25", "black", [ "v0" ] ],
+    [ "esp:5V", "bb1:tp.50", "red", [ "h-9.45", "v-182.4" ] ],
+    [ "bb1:46b.j", "bb1:bp.37", "red", [ "v0" ] ],
+    [ "bb1:41b.i", "bb1:46b.i", "red", [ "v0" ] ],
+    [ "bb1:40b.j", "esp:23", "gold", [ "v67.2", "h268.8", "v38.4", "h172.8", "v-230.4" ] ],
+    [ "servo1:PWM", "esp:18", "green", [ "h-19.2", "v-86.2", "h739.2", "v-115.2" ] ],
+    [
+      "esp:19",
+      "servo2:PWM",
+      "green",
+      [ "h9.6", "v-124.8", "h-153.6", "v19.2", "h-115.2", "v48", "h-460.8", "v-67.2" ]
+    ],
+    [ "servo2:V+", "esp:5V", "red", [ "h-9.6", "v86.5", "h595.2", "v153.6" ] ],
+    [ "servo1:GND", "servo2:GND", "black", [ "h-48", "v-336" ] ],
+    [ "esp:GND.1", "servo1:GND", "black", [ "h-662.25", "v19.2" ] ],
+    [ "temp1:GND", "bb1:39b.f", "", [ "$bb" ] ],
+    [ "temp1:DQ", "bb1:40b.f", "", [ "$bb" ] ],
+    [ "temp1:VCC", "bb1:41b.f", "", [ "$bb" ] ],
+    [ "led1:A", "bb1:55b.g", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:54b.g", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:40b.h", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:46b.h", "", [ "$bb" ] ],
+    [ "servo1:V+", "esp:5V", "red", [ "h-38.4", "v-249.5", "h643.2", "v153.6" ] ],
+    [ "r1:1", "bb1:55b.h", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:61b.h", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}

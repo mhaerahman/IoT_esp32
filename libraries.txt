@@ -1,0 +1,12 @@
+# Wokwi Library List
+# See https://docs.wokwi.com/guides/libraries
+
+# Automatically added based on includes:
+
+UniversalTelegramBot
+HC-SR04
+OneWire
+DallasTemperature
+NTPClient
+HX711
+ESP32Servo
